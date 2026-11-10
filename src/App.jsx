@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import Globe from "react-globe.gl";
 import "./App.css";
@@ -229,12 +228,13 @@ function App() {
     }
   }
 
-  const [globeSize, setGlobeSize] = useState(
-    window.innerWidth <= 900 ? 440 : 650
-  );
+  const getGlobeSize = () =>
+    window.innerWidth <= 900 ? Math.min(440, window.innerWidth) : 650;
+
+  const [globeSize, setGlobeSize] = useState(getGlobeSize);
 
   useEffect(() => {
-    const onResize = () => setGlobeSize(window.innerWidth <= 900 ? 440 : 650);
+    const onResize = () => setGlobeSize(getGlobeSize());
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);

@@ -432,18 +432,44 @@ body {
   /* Globe initial position */
 
   .globe-container {
-  left: calc(100vw - 430px);
-  top: 78%;
-  transform: translateY(-50%);
-  opacity: 0.8;
-}
+  /* Page becomes a vertical flow: text first, globe below it */
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.globe-container.globe-active {
-  left: 50%;
-  top: 62%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-}
+  .main-content {
+    order: 1;
+    width: 100%;
+    min-height: 88vh;
+  }
+
+  .main-content.main-hidden {
+    display: none;
+  }
+
+  /* Globe as a normal block under the text (reached by scrolling) */
+  .globe-container {
+    order: 2;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin: 0 auto 40px;
+    opacity: 1;
+    transition: none;
+    flex-shrink: 0;
+  }
+
+  /* Active mode: full-screen centered globe */
+  .globe-container.globe-active {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
 
   /* Header */
 
@@ -545,4 +571,4 @@ body {
   .drawer-status {
     margin-top: 25px;
   }
-}
+}}
