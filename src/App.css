@@ -433,14 +433,14 @@ body {
 
   .globe-container {
   left: calc(100vw - 430px);
-  top: 55%;
+  top: 78%;
   transform: translateY(-50%);
   opacity: 0.8;
 }
 
 .globe-container.globe-active {
   left: 50%;
-  top: 50%;
+  top: 62%;
   transform: translate(-50%, -50%);
   opacity: 1;
 }
