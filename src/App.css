@@ -429,9 +429,6 @@ body {
 
 @media (max-width: 900px) {
 
-  /* Globe initial position */
-
-  .globe-container {
   /* Page becomes a vertical flow: text first, globe below it */
   .app-shell {
     display: flex;
@@ -571,4 +568,4 @@ body {
   .drawer-status {
     margin-top: 25px;
   }
-}}
+}
