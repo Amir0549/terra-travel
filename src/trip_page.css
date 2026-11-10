@@ -1,0 +1,426 @@
+/* ========================================
+   DRAWER EXPANSION (overrides App.css)
+======================================== */
+
+.destination-drawer {
+  transition:
+    transform 0.6s cubic-bezier(0.76, 0, 0.24, 1),
+    width 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.destination-drawer.drawer-full {
+  width: 100vw;
+  overflow: hidden;
+  background: #173F35;
+}
+
+.destination-drawer .drawer-default {
+  transition: opacity 0.35s ease;
+}
+
+.destination-drawer.drawer-full .drawer-default {
+  opacity: 0;
+  pointer-events: none;
+}
+
+button.drawer-status.explore-btn {
+  display: block;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, letter-spacing 0.3s ease;
+}
+
+button.drawer-status.explore-btn:hover {
+  background: #C18B51;
+  letter-spacing: 3px;
+}
+
+
+/* ========================================
+   TRIP PAGE SHELL
+======================================== */
+
+.trip-shell {
+  position: absolute;
+  inset: 0;
+  color: #F5F1E8;
+  background: #173F35;
+  animation: tripFadeIn 0.8s ease both;
+}
+
+@keyframes tripFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.trip-scroll {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.trip-back {
+  position: absolute;
+  z-index: 5;
+  top: 28px;
+  left: 5%;
+
+  padding: 12px 20px;
+  font-size: 12px;
+
+  color: #F5F1E8;
+  background: rgba(23, 63, 53, 0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid #547267;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trip-back:hover {
+  background: #D6C6A5;
+  color: #173F35;
+}
+
+.trip-eyebrow {
+  color: #C18B51;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   REVEAL ANIMATION
+======================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.trip-hero {
+  position: relative;
+  height: 80vh;
+  min-height: 460px;
+  overflow: hidden;
+}
+
+.trip-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: heroZoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.25); }
+  to   { transform: scale(1); }
+}
+
+.trip-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    #173F35 2%,
+    rgba(23, 63, 53, 0.45) 55%,
+    rgba(23, 63, 53, 0.2)
+  );
+}
+
+.trip-hero-text {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 9%;
+}
+
+.trip-hero-text .trip-eyebrow,
+.trip-hero-text h1,
+.trip-hero-text .trip-subtitle {
+  opacity: 0;
+  animation: riseIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.trip-hero-text .trip-eyebrow { animation-delay: 0.5s; }
+.trip-hero-text h1            { animation-delay: 0.7s; }
+.trip-hero-text .trip-subtitle { animation-delay: 0.95s; }
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.trip-hero-text h1 {
+  margin-top: 16px;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.trip-subtitle {
+  margin-top: 22px;
+  max-width: 720px;
+  color: #D6C6A5;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   STATS
+======================================== */
+
+.trip-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 50px 7%;
+  border-bottom: 1px solid #2F5A4D;
+}
+
+.trip-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trip-stat strong {
+  color: #C18B51;
+  font-size: 48px;
+  font-weight: 400;
+}
+
+.trip-stat span {
+  color: #D6C6A5;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+
+/* ========================================
+   STOPS
+======================================== */
+
+.trip-stop {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 6%;
+  align-items: center;
+  padding: 90px 7%;
+  border-bottom: 1px solid #2F5A4D;
+}
+
+.trip-stop-flip .stop-media {
+  order: 2;
+}
+
+.stop-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #1F4F43;
+}
+
+.stop-media img,
+.img-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
+  transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stop-media.reveal-in img,
+.stop-media.reveal-in .img-fallback {
+  transform: scale(1);
+}
+
+.stop-media:hover img {
+  transform: scale(1.06);
+}
+
+.img-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D6C6A5;
+  font-size: 22px;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #1F4F43, #2F5A4D);
+}
+
+.stop-number {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  color: #F5F1E8;
+  font-size: 44px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.stop-body h2 {
+  margin-top: 14px;
+  font-size: 42px;
+  font-weight: 400;
+}
+
+.stop-transport {
+  margin-top: 10px;
+  color: #D6C6A5;
+  font-size: 13px;
+}
+
+.stop-list {
+  list-style: none;
+  margin-top: 28px;
+}
+
+.stop-list li {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid #2F5A4D;
+}
+
+.stop-list li span {
+  color: #C18B51;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding-top: 3px;
+}
+
+.stop-list li p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #E8E2D2;
+}
+
+.stop-stay {
+  margin-top: 24px;
+}
+
+.stop-stay span {
+  color: #85A398;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.stop-stay p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #D6C6A5;
+}
+
+.stop-cost {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 14px;
+  border: 1px solid #C18B51;
+  color: #C18B51;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+
+/* ========================================
+   BUDGET
+======================================== */
+
+.trip-budget {
+  padding: 90px 7% 120px;
+  max-width: 900px;
+}
+
+.trip-budget h2 {
+  margin: 14px 0 30px;
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.trip-budget table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.trip-budget th {
+  text-align: left;
+  color: #85A398;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.trip-budget th,
+.trip-budget td {
+  padding: 14px 10px 14px 0;
+  border-bottom: 1px solid #2F5A4D;
+}
+
+.trip-budget .budget-total td {
+  color: #C18B51;
+  font-weight: 700;
+  border-bottom: none;
+}
+
+.budget-note {
+  margin-top: 18px;
+  color: #85A398;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .trip-stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 40px 6%;
+  }
+
+  .trip-stop {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 60px 6%;
+  }
+
+  .trip-stop-flip .stop-media {
+    order: 0;
+  }
+
+  .stop-body h2 {
+    font-size: 34px;
+  }
+
+  .stop-list li {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .trip-hero-text {
+    left: 6%;
+    right: 6%;
+  }
+
+  .trip-budget {
+    padding: 60px 6% 90px;
+  }
+}

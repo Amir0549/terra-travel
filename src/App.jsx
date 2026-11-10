@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Globe from "react-globe.gl";
 import "./App.css";
+import TripPage from "./trip_page";
 
 const destinations = [
   {
@@ -10,13 +11,14 @@ const destinations = [
     city: "Rio de Janeiro",
     lat: -22.9068,
     lng: -43.1729,
-    duration: "7 Days",
-    price: "$1,450",
+    duration: "30 Days",
+    price: "$4,480",
     description:
       "Discover vibrant beaches, tropical landscapes and the unforgettable rhythm of Rio.",
     image:
       "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900",
     featured: true,
+    hasTrip: true,
   },
   {
     id: "austria",
@@ -151,6 +153,10 @@ function App() {
   const [globeActive, setGlobeActive] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState(null);
 
+  // الدراور الموسّع (صفحة كاملة)
+  const [tripOpen, setTripOpen] = useState(false);
+  const [showTrip, setShowTrip] = useState(false);
+
   // إعداد دوران الكرة
   useEffect(() => {
     if (!globeRef.current) return;
@@ -182,10 +188,22 @@ function App() {
     }
   }, [progress]);
 
+  // إظهار صفحة الرحلة بعد انتهاء توسّع الدراور
+  useEffect(() => {
+    if (!tripOpen) {
+      setShowTrip(false);
+      return;
+    }
+
+    const timeout = setTimeout(() => setShowTrip(true), 750);
+    return () => clearTimeout(timeout);
+  }, [tripOpen]);
+
   // الانتقال بالكاميرا إلى الوجهة
   function handleDestinationClick(destination) {
     setGlobeActive(true);
     setSelectedDestination(destination);
+    setTripOpen(false);
 
     if (globeRef.current) {
       globeRef.current.pointOfView(
@@ -215,8 +233,14 @@ function App() {
     }
   }
 
+  function handleCloseDrawer() {
+    setTripOpen(false);
+    setSelectedDestination(null);
+  }
+
   // العودة إلى الواجهة الرئيسية
   function handleBack() {
+    setTripOpen(false);
     setSelectedDestination(null);
     setGlobeActive(false);
 
@@ -310,65 +334,79 @@ function App() {
       {/* نافذة معلومات الوجهة */}
       <aside
         className={`destination-drawer ${selectedDestination ? "drawer-open" : ""
-          }`}
+          } ${tripOpen ? "drawer-full" : ""}`}
       >
         {selectedDestination && (
           <>
-            <button
-              className="drawer-close"
-              onClick={() => setSelectedDestination(null)}
-              aria-label="Close destination details"
-            >
-              ×
-            </button>
+            <div className="drawer-default">
+              <button
+                className="drawer-close"
+                onClick={handleCloseDrawer}
+                aria-label="Close destination details"
+              >
+                ×
+              </button>
 
-            {selectedDestination.image && (
-              <img
-                className="drawer-image"
-                src={selectedDestination.image}
-                alt={selectedDestination.name}
-              />
-            )}
-
-            <div className="drawer-content">
-              <p className="drawer-eyebrow">
-                {selectedDestination.country}
-              </p>
-
-              <h2>{selectedDestination.name}</h2>
-
-              <p className="drawer-city">
-                {selectedDestination.city}
-              </p>
-
-              <p className="drawer-description">
-                {selectedDestination.description}
-              </p>
-
-              <div className="drawer-divider" />
-
-              <div className="trip-info">
-                <div>
-                  <span>DURATION</span>
-                  <strong>{selectedDestination.duration}</strong>
-                </div>
-
-                <div>
-                  <span>STARTING FROM</span>
-                  <strong>{selectedDestination.price}</strong>
-                </div>
-              </div>
-
-              {selectedDestination.featured ? (
-                <div className="drawer-status">
-                  AVAILABLE DESTINATION
-                </div>
-              ) : (
-                <div className="drawer-status coming-soon">
-                  COMING SOON
-                </div>
+              {selectedDestination.image && (
+                <img
+                  className="drawer-image"
+                  src={selectedDestination.image}
+                  alt={selectedDestination.name}
+                />
               )}
+
+              <div className="drawer-content">
+                <p className="drawer-eyebrow">
+                  {selectedDestination.country}
+                </p>
+
+                <h2>{selectedDestination.name}</h2>
+
+                <p className="drawer-city">
+                  {selectedDestination.city}
+                </p>
+
+                <p className="drawer-description">
+                  {selectedDestination.description}
+                </p>
+
+                <div className="drawer-divider" />
+
+                <div className="trip-info">
+                  <div>
+                    <span>DURATION</span>
+                    <strong>{selectedDestination.duration}</strong>
+                  </div>
+
+                  <div>
+                    <span>STARTING FROM</span>
+                    <strong>{selectedDestination.price}</strong>
+                  </div>
+                </div>
+
+                {selectedDestination.hasTrip ? (
+                  <button
+                    className="drawer-status explore-btn"
+                    onClick={() => setTripOpen(true)}
+                  >
+                    Explore More
+                  </button>
+                ) : selectedDestination.featured ? (
+                  <div className="drawer-status">
+                    Explore More
+                  </div>
+                ) : (
+                  <div className="drawer-status coming-soon">
+                    COMING SOON
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* صفحة الرحلة الكاملة */}
+            {tripOpen && showTrip && (
+              <TripPage onClose={() => setTripOpen(false)} />
+            )}
           </>
         )}
       </aside>
