@@ -27,13 +27,14 @@ const destinations = [
     city: "Vienna",
     lat: 48.2082,
     lng: 16.3738,
-    duration: "5 Days",
-    price: "$1,200",
+    duration: "30 Days",
+    price: "€2,250",
     description:
       "Experience elegant architecture, alpine scenery and the timeless charm of Vienna.",
     image:
       "https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=900",
     featured: true,
+    hasTrip: true,
   },
   {
     id: "japan",
@@ -405,7 +406,10 @@ function App() {
 
             {/* صفحة الرحلة الكاملة */}
             {tripOpen && showTrip && (
-              <TripPage onClose={() => setTripOpen(false)} />
+              <TripPage
+                tripId={selectedDestination.id}
+                onClose={() => setTripOpen(false)}
+              />
             )}
           </>
         )}

@@ -135,6 +135,152 @@ const brazilTrip = {
   budgetTotal: ["Known total", "21", "4,480"],
 };
 
+const austriaTrip = {
+  heroImage:
+    "https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1800",
+  title: "Austria in 30 Days",
+  subtitle:
+    "Vienna → Wachau Valley → Hallstatt → Salzburg → Zell am See & Kaprun → Innsbruck → Graz",
+  stats: [
+    { value: "30", label: "DAYS" },
+    { value: "29", label: "NIGHTS" },
+    { value: "7", label: "MAIN REGIONS" },
+    { value: "1", label: "TRAVELER" },
+  ],
+  stops: [
+    {
+      title: "Vienna",
+      days: "Days 1 – 6",
+      transport: "Arrival from Algiers",
+      image:
+        "https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1200",
+      highlights: [
+        ["Day 1", "Arrive, check in and take a light stroll through the city center."],
+        ["Day 2", "Schönbrunn Palace, its gardens and the Imperial Carriage Museum."],
+        ["Day 3", "St. Stephen's Cathedral, Graben street and Hofburg Palace."],
+        ["Day 4", "Belvedere Palace, museums and art galleries."],
+        ["Day 5", "Prater park, the Ferris wheel and the Danube riverbank."],
+        ["Day 6", "Vienna Woods, Grinzing village and traditional markets."],
+      ],
+      stay: [],
+      cost: "€ 420 · 6 nights",
+    },
+    {
+      title: "Wachau Valley",
+      days: "Days 7 – 8",
+      transport: "Transfer from Vienna",
+      image:
+        "https://images.unsplash.com/photo-1609856878074-cf31e21ccb6b?w=1200",
+      highlights: [
+        ["Day 7", "Melk Abbey, Dürnstein village and views over the Danube."],
+        ["Day 8", "Krems, the vineyards and a boat trip on the river (seasonal)."],
+      ],
+      stay: ["Krems", "Melk"],
+      cost: "€ 130 · 2 nights",
+    },
+    {
+      title: "Hallstatt & Lake District",
+      days: "Days 9 – 12",
+      transport: "Transfer from the Wachau Valley",
+      image:
+        "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?w=1200",
+      highlights: [
+        ["Day 9", "Arrive in Hallstatt and explore the village and the lake."],
+        [
+          "Day 10",
+          "Skywalk viewpoint and the salt mines (if open), plus a boat trip.",
+        ],
+        ["Days 11–12", "Activities to be added."],
+      ],
+      stay: ["Hallstatt", "Bad Ischl"],
+      cost: "€ 380 · 4 nights",
+    },
+    {
+      title: "Salzburg",
+      days: "Days 13 – 16",
+      transport: "Transfer from Hallstatt",
+      image:
+        "https://unsplash.com/photos/F3ejC3VCVug/download?force=true&w=1200",
+      highlights: [["Days 13–16", "Daily activities to be added."]],
+      stay: [],
+      cost: "€ 320 · 4 nights",
+    },
+    {
+      title: "Zell am See & Kaprun",
+      days: "Days 17 – 21",
+      transport: "Transfer from Salzburg",
+      image:
+        "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200",
+      highlights: [
+        ["Days 17–20", "Activities to be added."],
+        ["Day 21", "Free day: water activities, walks and relaxing by the lake."],
+      ],
+      stay: [],
+      cost: "€ 400 · 5 nights",
+    },
+    {
+      title: "Innsbruck & Tyrol",
+      days: "Days 22 – 27",
+      transport: "Transfer from Zell am See",
+      image:
+        "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=1200",
+      highlights: [
+        ["Day 22", "Arrive in Innsbruck and explore the old town and the Golden Roof."],
+        ["Day 23", "Nordkette cable car and Alpine panoramas."],
+        ["Day 24", "Seefeld village and the surrounding mountain areas."],
+        ["Day 25", "Stubai Valley: villages and waterfalls."],
+        ["Day 26", "Ambras Castle, its gardens and a stroll through the city."],
+        ["Day 27", "Mountain activities or a visit to nearby villages."],
+      ],
+      stay: [],
+      cost: "€ 480 · 6 nights",
+    },
+    {
+      title: "Graz",
+      days: "Days 28 – 29",
+      transport: "Transfer from Innsbruck",
+      image:
+        "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=1200",
+      highlights: [
+        ["Day 28", "Arrive in Graz: old town, Clock Tower and Hauptplatz."],
+        ["Day 29", "Eggenberg Palace and gardens, markets and the surroundings."],
+      ],
+      stay: [],
+      cost: "€ 120 · 2 nights",
+    },
+    {
+      title: "Return Home",
+      days: "Day 30",
+      transport: "Graz → Vienna → Algiers",
+      image:
+        "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200",
+      highlights: [
+        ["Day 30", "Travel from Graz to Vienna, then head to the airport and fly back to Algiers."],
+      ],
+      stay: [],
+      cost: "",
+    },
+  ],
+  budgetEyebrow: "ACCOMMODATION ESTIMATE",
+  budgetTitle: "Budget at a glance",
+  budgetHeaders: ["Destination", "Nights", "Cost (EUR)"],
+  budget: [
+    ["Vienna", "6", "420"],
+    ["Wachau Valley", "2", "130"],
+    ["Hallstatt & Lake District", "4", "380"],
+    ["Salzburg", "4", "320"],
+    ["Zell am See & Kaprun", "5", "400"],
+    ["Innsbruck & Tyrol", "6", "480"],
+    ["Graz", "2", "120"],
+  ],
+  budgetTotal: ["Estimated total", "29", "2,250"],
+};
+
+const trips = {
+  brazil: brazilTrip,
+  austria: austriaTrip,
+};
+
 /* ========================================
    SMALL HELPERS
 ======================================== */
@@ -186,8 +332,13 @@ function SafeImage({ src, alt }) {
    TRIP PAGE
 ======================================== */
 
-function TripPage({ onClose }) {
-  const trip = brazilTrip;
+function TripPage({ onClose, tripId = "brazil" }) {
+  const trip = trips[tripId] || brazilTrip;
+  const budgetHeaders = trip.budgetHeaders || [
+    "Destination",
+    "Nights",
+    "Cost (BRL)",
+  ];
 
   return (
     <div className="trip-shell">
@@ -257,23 +408,25 @@ function TripPage({ onClose }) {
 
         {/* BUDGET */}
         <Reveal className="trip-budget">
-          <p className="trip-eyebrow">ACCOMMODATION ESTIMATE</p>
-          <h2>Budget at a glance</h2>
+          <p className="trip-eyebrow">
+            {trip.budgetEyebrow || "ACCOMMODATION ESTIMATE"}
+          </p>
+          <h2>{trip.budgetTitle || "Budget at a glance"}</h2>
 
           <table>
             <thead>
               <tr>
-                <th>Destination</th>
-                <th>Nights</th>
-                <th>Cost (BRL)</th>
+                {budgetHeaders.map((header) => (
+                  <th key={header}>{header}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {trip.budget.map(([name, nights, cost]) => (
-                <tr key={name}>
-                  <td>{name}</td>
-                  <td>{nights}</td>
-                  <td>{cost}</td>
+              {trip.budget.map((row) => (
+                <tr key={row[0]}>
+                  {row.map((cell, i) => (
+                    <td key={i}>{cell}</td>
+                  ))}
                 </tr>
               ))}
               <tr className="budget-total">
@@ -284,10 +437,10 @@ function TripPage({ onClose }) {
             </tbody>
           </table>
 
-          <p className="budget-note">
+          {/* <p className="budget-note">
             Rio de Janeiro (7 nights) and the final night in Salvador are not
             included yet.
-          </p>
+          </p> */}
         </Reveal>
       </div>
     </div>
