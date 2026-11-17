@@ -264,6 +264,37 @@ button.drawer-status.explore-btn:hover {
   background: linear-gradient(135deg, #1F4F43, #2F5A4D);
 }
 
+.stop-media-clickable {
+  cursor: pointer;
+}
+
+.stop-media-clickable:focus-visible {
+  outline: 2px solid #C18B51;
+  outline-offset: 4px;
+}
+
+.stop-view {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  padding: 9px 14px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #F5F1E8;
+  background: rgba(23, 63, 53, 0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid #C18B51;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.stop-media-clickable:hover .stop-view,
+.stop-media-clickable:focus-visible .stop-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .stop-number {
   position: absolute;
   top: 18px;
@@ -335,6 +366,223 @@ button.drawer-status.explore-btn:hover {
   color: #C18B51;
   font-size: 12px;
   letter-spacing: 1px;
+}
+
+
+/* ========================================
+   STOP DETAIL (expands from the clicked image)
+======================================== */
+
+.stop-detail {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: #173F35;
+  color: #F5F1E8;
+  transition: clip-path 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: clip-path;
+}
+
+.stop-detail-scroll {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.detail-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.detail-hero img,
+.detail-hero .img-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stop-detail-open .detail-hero img,
+.stop-detail-open .detail-hero .img-fallback {
+  transform: scale(1);
+}
+
+.detail-hero-text {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 10%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stop-detail-open .detail-hero-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.55s;
+}
+
+.detail-hero-text h1 {
+  margin-top: 16px;
+  font-size: clamp(40px, 7vw, 84px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.detail-body {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 6%;
+  padding: 70px 7% 110px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stop-detail-open .detail-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.75s;
+}
+
+.detail-gallery {
+  padding: 0 7% 110px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.stop-detail-open .detail-gallery {
+  opacity: 1;
+  transition-delay: 1s;
+}
+
+.detail-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.detail-photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #1F4F43;
+}
+
+.detail-photo:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
+
+.detail-photo img,
+.detail-photo .img-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-photo:hover img {
+  transform: scale(1.06);
+}
+
+.detail-timeline {
+  list-style: none;
+  margin-top: 24px;
+}
+
+.detail-timeline li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 18px;
+  padding: 20px 0;
+  border-top: 1px solid #2F5A4D;
+}
+
+.detail-day {
+  color: #C18B51;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding-top: 4px;
+}
+
+.detail-timeline p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #E8E2D2;
+}
+
+.detail-activity-photo {
+  margin-top: 16px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #1F4F43;
+}
+
+.detail-activity-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-activity-photo:hover img {
+  transform: scale(1.05);
+}
+
+.detail-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-self: start;
+}
+
+.detail-card {
+  padding: 24px;
+  background: #1F4F43;
+  border: 1px solid #2F5A4D;
+}
+
+.detail-card > span {
+  color: #85A398;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.detail-card strong {
+  display: block;
+  margin-top: 10px;
+  color: #C18B51;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.detail-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #D6C6A5;
+}
+
+.detail-card ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.detail-card li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #E8E2D2;
+  border-top: 1px solid #2F5A4D;
+}
+
+.detail-card li:first-child {
+  border-top: none;
 }
 
 
@@ -422,5 +670,37 @@ button.drawer-status.explore-btn:hover {
 
   .trip-budget {
     padding: 60px 6% 90px;
+  }
+
+  .stop-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  .detail-hero {
+    height: 55vh;
+  }
+
+  .detail-hero-text {
+    left: 6%;
+    right: 6%;
+  }
+
+  .detail-body {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 50px 6% 90px;
+  }
+
+  .detail-timeline li {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .detail-gallery {
+    padding: 0 6% 90px;
+  }
+
+  .detail-gallery-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
