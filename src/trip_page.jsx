@@ -305,6 +305,31 @@ const trips = {
   austria: austriaTrip,
 };
 
+function getTripImageUrls(trip) {
+  const imageUrls = [trip.heroImage];
+
+  trip.stops.forEach((stop) => {
+    imageUrls.push(stop.image, ...(stop.gallery ?? []));
+    stop.highlights.forEach((highlight) => {
+      if (highlight[2]) imageUrls.push(highlight[2]);
+    });
+  });
+
+  return [...new Set(imageUrls.filter(Boolean))];
+}
+
+export function getTripImagePreloadGroups() {
+  return [
+    [brazilTrip.heroImage, austriaTrip.heroImage],
+    getTripImageUrls(brazilTrip).filter(
+      (imageUrl) => imageUrl !== brazilTrip.heroImage
+    ),
+    getTripImageUrls(austriaTrip).filter(
+      (imageUrl) => imageUrl !== austriaTrip.heroImage
+    ),
+  ];
+}
+
 /* ========================================
    SMALL HELPERS
 ======================================== */
