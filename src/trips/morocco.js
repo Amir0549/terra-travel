@@ -1,0 +1,136 @@
+import { u, uh } from "./images.js";
+
+const moroccoTrip = {
+  heroImage: uh("8pbviHdpZvA"),
+  title: "Morocco in 17 Days",
+  region: "NORTH AFRICA",
+  subtitle:
+    "Casablanca & Rabat → Chefchaouen → Fes → Sahara → Dadès & Aït Benhaddou → Marrakech → Essaouira",
+  stats: [
+    { value: "17", label: "DAYS" },
+    { value: "16", label: "NIGHTS" },
+    { value: "7", label: "MAIN REGIONS" },
+    { value: "1", label: "TRAVELER" },
+  ],
+  stops: [
+    {
+      title: "Casablanca & Rabat",
+      days: "Days 1 – 3",
+      transport: "Arrival from Algiers via a connecting flight to Casablanca",
+      image: u("ymEGRkA25zQ"),
+      highlights: [
+        ["Day 1", "Arrive, check in and walk the Corniche toward the Hassan II Mosque at sunset.", u("XWN79nmyS44")],
+        ["Day 2", "Guided visit of the Hassan II Mosque (book ahead), then the Habous quarter and the Central Market.", u("uu-YGo9YVDw")],
+        ["Day 3", "Train to Rabat (about 1 hour): Kasbah of the Udayas, Hassan Tower and the Mausoleum of Mohammed V.", u("Rv8oS9UltKQ")],
+      ],
+      stay: ["Casablanca city center", "Rabat medina"],
+      cost: "1,200 MAD · 3 nights",
+      gallery: [u("hkec6XrQGSM"), u("PiTmK4Kotw0"), u("O8DeUbPBtXk")],
+    },
+    {
+      title: "Chefchaouen",
+      days: "Days 4 – 5",
+      transport: "CTM bus from Rabat · about 5 hours",
+      image: u("mGstAwG0opU"),
+      highlights: [
+        ["Day 4", "Arrive in the blue city and wander the medina and Plaza Uta el-Hammam.", u("CMmgfHQiYsc")],
+        ["Day 5", "Walk up to the Spanish Mosque for sunset, then the Ras el-Maa waterfall and the old kasbah.", u("SW77Zlv8QPY")],
+      ],
+      stay: ["Chefchaouen medina riad"],
+      cost: "700 MAD · 2 nights",
+      gallery: [u("CBfUGtVP0QE"), u("NncAbldgViA"), u("JibMa0FbyHw")],
+    },
+    {
+      title: "Fes",
+      days: "Days 6 – 8",
+      transport: "CTM bus from Chefchaouen · about 4 hours",
+      image: u("Rk77UHyDeZM"),
+      highlights: [
+        ["Day 6", "Arrive, pass through Bab Bou Jeloud and take a first walk into Fes el-Bali.", u("w1enP6Kjzas")],
+        ["Day 7", "Guided medina day: Chouara Tannery, Bou Inania and Al-Attarine madrasas, and the Qarawiyyin area.", u("ZFhtkc5am_E")],
+        ["Day 8", "Fes el-Jdid, the Royal Palace gates and the Mellah, then sunset at the Merenid Tombs."],
+      ],
+      stay: ["Fes el-Bali riad"],
+      cost: "1,200 MAD · 3 nights",
+      gallery: [u("tKGa8OvliAI"), u("9_jrEEOS3r4"), u("SaRFvCcAaHs")],
+    },
+    {
+      title: "Merzouga & the Sahara",
+      days: "Days 9 – 10",
+      transport: "Supratours bus or private transfer from Fes · about 9 hours",
+      image: u("pVx6kKTJz9Y"),
+      highlights: [
+        ["Day 9", "A long drive through Ifrane and the Middle Atlas cedar forests, then a sunset camel ride into Erg Chebbi and a night in a desert camp.", u("NhlKx6Uvm3E")],
+        ["Day 10", "Sunrise over the dunes, then a 4x4 tour of Khamlia and its Gnawa music; second night at the foot of the dunes.", u("sMV0Rv4UKKY")],
+      ],
+      stay: ["Desert camp", "Merzouga auberge"],
+      cost: "1,600 MAD · 2 nights",
+      gallery: [u("vjs92g9SAz0"), u("pZh7PCw9gEo"), u("OTbsPvXlLoc")],
+    },
+    {
+      title: "Todra, Dadès & Aït Benhaddou",
+      days: "Days 11 – 12",
+      transport: "Private transfer or shared grand taxi from Merzouga · 2.5 hours to Todra, then 4–5 hours onward",
+      image: u("5tfETPLIjbo"),
+      highlights: [
+        ["Day 11", "Rissani market, then the cliffs of Todra Gorge and an evening in the Dadès Valley.", u("r7Ti-__7r08")],
+        ["Day 12", "Dadès Gorge in the morning, then the road of a thousand kasbahs to Aït Benhaddou for sunset on the ksar.", u("vQBzESXYCnE")],
+      ],
+      stay: ["Tinghir or Dadès Valley", "Aït Benhaddou"],
+      cost: "900 MAD · 2 nights",
+      gallery: [u("3mQycKyaDHo"), u("V2rcFP2O9eM"), u("Vtt8airVsKQ"), u("W_F-jaa4r4A")],
+    },
+    {
+      title: "Marrakech",
+      days: "Days 13 – 15",
+      transport: "Bus or shared transfer over the Tizi n'Tichka pass · 4–5 hours",
+      image: u("9cpsAEkyK10"),
+      highlights: [
+        ["Day 13", "Cross the High Atlas, check in to a riad and head to Jemaa el-Fnaa at dusk.", u("FP9g9fNk9zA")],
+        ["Day 14", "Bahia Palace, Saadian Tombs and a long afternoon in the souks.", u("HSB8US7lrT4")],
+        ["Day 15", "Koutoubia Mosque, Majorelle Garden and the YSL Museum, then a rooftop sunset over the medina.", u("RrWZRhRIu7c")],
+      ],
+      stay: ["Marrakech medina riad", "Gueliz"],
+      cost: "1,650 MAD · 3 nights",
+      gallery: [u("-2w82GOysj8"), u("n4Qtylea9-M"), u("WHOCO_w5dZA")],
+    },
+    {
+      title: "Essaouira",
+      days: "Day 16",
+      transport: "Supratours or CTM bus from Marrakech · about 3 hours",
+      image: u("5yhTWJjdJ48"),
+      highlights: [
+        ["Day 16", "Ramparts and the Skala, the blue fishing port, a seafood grill by the harbor and sunset on the beach.", u("SQxLsGEdx5s")],
+      ],
+      stay: ["Essaouira medina"],
+      cost: "500 MAD · 1 night",
+      gallery: [u("X8JepWd3ZAc"), u("AdlNESeAUg4"), u("No_Y3bn4lNQ")],
+    },
+    {
+      title: "Return Home",
+      days: "Day 17",
+      transport: "Essaouira → Marrakech → Algiers via a connecting flight",
+      image: u("hIP_QQBjRCU"),
+      highlights: [
+        ["Day 17", "Bus back to Marrakech, head to the airport and fly back to Algiers."],
+      ],
+      stay: [],
+      cost: "",
+    },
+  ],
+  budgetEyebrow: "ACCOMMODATION ESTIMATE",
+  budgetTitle: "Budget at a glance",
+  budgetHeaders: ["Destination", "Nights", "Cost (MAD)"],
+  budget: [
+    ["Casablanca & Rabat", "3", "1,200"],
+    ["Chefchaouen", "2", "700"],
+    ["Fes", "3", "1,200"],
+    ["Merzouga & the Sahara", "2", "1,600"],
+    ["Todra, Dadès & Aït Benhaddou", "2", "900"],
+    ["Marrakech", "3", "1,650"],
+    ["Essaouira", "1", "500"],
+  ],
+  budgetTotal: ["Estimated total", "16", "7,750"],
+};
+
+export default moroccoTrip;

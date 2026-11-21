@@ -308,6 +308,7 @@ button.drawer-status.explore-btn:hover {
   margin-top: 14px;
   font-size: 42px;
   font-weight: 400;
+  color: #F5F1E8;
 }
 
 .stop-transport {
@@ -430,6 +431,7 @@ button.drawer-status.explore-btn:hover {
   font-size: clamp(40px, 7vw, 84px);
   font-weight: 400;
   line-height: 1.05;
+  color: #F5F1E8;
 }
 
 .detail-body {
@@ -599,6 +601,7 @@ button.drawer-status.explore-btn:hover {
   margin: 14px 0 30px;
   font-size: 38px;
   font-weight: 400;
+  color: #F5F1E8;
 }
 
 .trip-budget table {
@@ -619,6 +622,10 @@ button.drawer-status.explore-btn:hover {
 .trip-budget td {
   padding: 14px 10px 14px 0;
   border-bottom: 1px solid #2F5A4D;
+}
+
+.trip-budget td {
+  color: #E8E2D2;
 }
 
 .trip-budget .budget-total td {
