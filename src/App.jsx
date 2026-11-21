@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Globe from "react-globe.gl";
 import "./App.css";
-import TripPage, { getTripImagePreloadGroups } from "./trip_page";
+import TripPage from "./trip_page";
 
 const destinations = [
   {
@@ -56,11 +56,12 @@ const destinations = [
     city: "Rome",
     lat: 41.9028,
     lng: 12.4964,
-    duration: "6 Days",
-    price: "$1,350",
+    duration: "30 Days",
+    price: "€2,810",
     description: "Discover historic streets, art and remarkable cuisine.",
     image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=900",
-    featured: false,
+    featured: true,
+    hasTrip: true,
   },
   {
     id: "egypt",
@@ -95,11 +96,12 @@ const destinations = [
     city: "Toronto",
     lat: 43.6532,
     lng: -79.3832,
-    duration: "7 Days",
-    price: "$1,650",
+    duration: "30 Days",
+    price: "C$5,030",
     description: "Enjoy vibrant cities and extraordinary natural scenery.",
     image: "https://images.unsplash.com/photo-1503614472-8c93d56cd7b4?w=900",
-    featured: false,
+    featured: true,
+    hasTrip: true,
   },
   {
     id: "australia",
@@ -130,64 +132,6 @@ const destinations = [
 ];
 
 const destinationClickRadius = 4;
-const tripImageGroups = getTripImagePreloadGroups();
-const backgroundImageGroups = [
-  [
-    ...tripImageGroups[0],
-    ...destinations
-      .filter((destination) => destination.featured)
-      .map((destination) => destination.image),
-  ],
-  tripImageGroups[1],
-  tripImageGroups[2],
-  destinations
-    .filter((destination) => !destination.featured)
-    .map((destination) => destination.image),
-].map((group) => [...new Set(group)]);
-const imagePreloadPromises = new Map();
-
-function preloadImage(url) {
-  const existingPromise = imagePreloadPromises.get(url);
-  if (existingPromise) return existingPromise;
-
-  const image = new Image();
-  image.decoding = "async";
-  image.fetchPriority = "low";
-
-  const promise = new Promise((resolve) => {
-    image.onload = resolve;
-    image.onerror = resolve;
-  });
-  imagePreloadPromises.set(url, promise);
-  image.src = url;
-  return promise;
-}
-
-function waitForIdleTime() {
-  return new Promise((resolve) => {
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(resolve, { timeout: 1500 });
-    } else {
-      window.setTimeout(resolve, 0);
-    }
-  });
-}
-
-async function preloadImageGroup(urls) {
-  let nextIndex = 0;
-  const worker = async () => {
-    while (nextIndex < urls.length) {
-      await waitForIdleTime();
-      const url = urls[nextIndex];
-      nextIndex += 1;
-      await preloadImage(url);
-    }
-  };
-
-  await Promise.all(
-    Array.from({ length: Math.min(3, urls.length) }, () => worker())
-  );
-}
 
 function getAngularDistance(first, second) {
   const toRadians = (degrees) => (degrees * Math.PI) / 180;
@@ -210,7 +154,6 @@ function App() {
   const [progress, setProgress] = useState(0);
   const [introFinished, setIntroFinished] = useState(false);
   const [globeActive, setGlobeActive] = useState(false);
-  const [globeReady, setGlobeReady] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState(null);
 
   // الدراور الموسّع (صفحة كاملة)
@@ -236,23 +179,6 @@ function App() {
 
     return () => clearInterval(interval);
   }, [introFinished]);
-
-  useEffect(() => {
-    if (!globeReady) return;
-
-    let cancelled = false;
-    const preloadImages = async () => {
-      for (const group of backgroundImageGroups) {
-        if (cancelled) return;
-        await preloadImageGroup(group);
-      }
-    };
-
-    preloadImages();
-    return () => {
-      cancelled = true;
-    };
-  }, [globeReady]);
 
   // إنهاء شاشة الترحيب
   useEffect(() => {
@@ -353,7 +279,6 @@ function App() {
           ref={globeRef}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
           bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-          onGlobeReady={() => setGlobeReady(true)}
           backgroundColor="rgba(0,0,0,0)"
           width={globeSize}
           height={globeSize}

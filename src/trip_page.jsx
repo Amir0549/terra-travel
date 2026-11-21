@@ -9,6 +9,10 @@ import "./trip_page.css";
 const u = (id) =>
   `https://unsplash.com/photos/${id}/download?force=true&w=1200`;
 
+// Same, but wider (for hero images)
+const uh = (id) =>
+  `https://unsplash.com/photos/${id}/download?force=true&w=1800`;
+
 const brazilTrip = {
   heroImage:
     "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1800",
@@ -300,35 +304,324 @@ const austriaTrip = {
   budgetTotal: ["Estimated total", "29", "2,250"],
 };
 
+const canadaTrip = {
+  heroImage: uh("btaqHQwUH9M"),
+  title: "Canada in 30 Days",
+  region: "NORTH AMERICA",
+  subtitle:
+    "Toronto → Niagara Falls → Ottawa → Montréal → Québec City → Banff → Jasper → Vancouver",
+  stats: [
+    { value: "30", label: "DAYS" },
+    { value: "29", label: "NIGHTS" },
+    { value: "8", label: "MAIN REGIONS" },
+    { value: "1", label: "TRAVELER" },
+  ],
+  stops: [
+    {
+      title: "Toronto",
+      days: "Days 1 – 5",
+      transport: "Arrival from Algiers",
+      image: u("DJ_kOgH5u0o"),
+      highlights: [
+        ["Day 1", "Arrive, settle in and stroll the Harbourfront.", u("rOh3CJXYLoM")],
+        ["Day 2", "CN Tower, the downtown skyline and the Distillery District.", u("OzqTeeo6CQA")],
+        ["Day 3", "Kensington Market, Chinatown and the Art Gallery of Ontario."],
+        ["Day 4", "Royal Ontario Museum, Yorkville and Casa Loma."],
+        ["Day 5", "Ferry to the Toronto Islands for skyline views, beaches and bike paths.", u("6MFSdlc3p5k")],
+      ],
+      stay: ["Downtown", "Kensington Market area"],
+      cost: "C$ 750 · 5 nights",
+      gallery: [u("ToT5RFPbChA"), u("xRQ_sv2sAG8"), u("u0jSADAIKsU")],
+    },
+    {
+      title: "Niagara Falls",
+      days: "Days 6 – 7",
+      transport: "Bus or train from Toronto · 1.5–2 hours",
+      image: u("G-dfxw3DFYc"),
+      highlights: [
+        ["Day 6", "Boat cruise to the foot of Horseshoe Falls and the walkways above the gorge.", u("NKqx9yvty1U")],
+        ["Day 7", "Niagara-on-the-Lake, vineyards and the Niagara Parkway; back to the Falls for the evening lights.", u("SfEr9kM13AI")],
+      ],
+      stay: ["Clifton Hill area", "Niagara-on-the-Lake"],
+      cost: "C$ 280 · 2 nights",
+      gallery: [u("rYxN1WNFzlk"), u("oa7OyUqNs5E"), u("ZCdzNqfeekc")],
+    },
+    {
+      title: "Ottawa",
+      days: "Days 8 – 9",
+      transport: "Bus or train via Toronto · 6–8 hours",
+      image: u("VAxCHgJvZ0g"),
+      highlights: [
+        ["Day 8", "Parliament Hill, ByWard Market and the Rideau Canal.", u("GOZxsk4SoHk")],
+        ["Day 9", "National Gallery of Canada, the Museum of History across the river and Major's Hill Park."],
+      ],
+      stay: ["ByWard Market", "Centretown"],
+      cost: "C$ 280 · 2 nights",
+    },
+    {
+      title: "Montréal",
+      days: "Days 10 – 13",
+      transport: "Train from Ottawa · about 2 hours",
+      image: u("4ErF4LnA6ag"),
+      highlights: [
+        ["Day 10", "Old Montréal: cobbled streets, Notre-Dame Basilica and the Old Port.", u("TSlb4zhuY4U")],
+        ["Day 11", "Mount Royal Park and the Kondiaronk Belvedere, then the Plateau neighborhood.", u("fWn5B2aKjYA")],
+        ["Day 12", "Jean-Talon Market, Mile End bagels and Saint Joseph's Oratory."],
+        ["Day 13", "Parc Jean-Drapeau and the Biosphere, or the Museum of Fine Arts.", u("LdCpEcMQgQI")],
+      ],
+      stay: ["Old Montréal", "Plateau Mont-Royal"],
+      cost: "C$ 560 · 4 nights",
+      gallery: [u("QLW7QrVC0s4"), u("iJTXWlMmoOg")],
+    },
+    {
+      title: "Québec City",
+      days: "Days 14 – 16",
+      transport: "Train or bus from Montréal · 3–3.5 hours",
+      image: u("NsJXHJvzBrM"),
+      highlights: [
+        ["Day 14", "Château Frontenac, Dufferin Terrace and the walls of Old Québec.", u("_ReBly3gzdM")],
+        ["Day 15", "Petit Champlain, Place Royale, the funicular and the Plains of Abraham."],
+        ["Day 16", "Montmorency Falls and a drive around Île d'Orléans."],
+      ],
+      stay: ["Old Québec (Haute-Ville)"],
+      cost: "C$ 450 · 3 nights",
+    },
+    {
+      title: "Banff & Lake Louise",
+      days: "Days 17 – 21",
+      transport: "Flight Québec City → Calgary (with a connection), then shuttle to Banff · 1.5 hours",
+      image: u("0ic2ZYeDQx4"),
+      highlights: [
+        ["Day 17", "Arrive, walk Banff town and Bow Falls.", u("EEZ8YHufjPc")],
+        ["Day 18", "Banff Gondola up Sulphur Mountain, then the Upper Hot Springs."],
+        ["Day 19", "Lake Louise and Moraine Lake (use the Parks Canada shuttle; book early).", u("I18vbegx6ss")],
+        ["Day 20", "Johnston Canyon and Lake Minnewanka."],
+        ["Day 21", "Free day: canoe on the lake or a sunrise at the Vermilion Lakes.", u("V6kJLt0nPJs")],
+      ],
+      stay: ["Banff town", "Lake Louise village"],
+      cost: "C$ 1,150 · 5 nights",
+      gallery: [u("-tbY8U4UE4Y"), u("OkiDIla7K8Q"), u("DEnsSdJHVkk")],
+    },
+    {
+      title: "Jasper",
+      days: "Days 22 – 25",
+      transport: "Icefields Parkway from Banff · 4–5 hours (bus or car)",
+      image: u("9e0dAX1bUsA"),
+      highlights: [
+        ["Day 22", "Drive the Icefields Parkway: Peyto Lake, Athabasca Glacier and Athabasca Falls."],
+        ["Day 23", "Maligne Lake and the Spirit Island cruise.", u("qmF3kZBhIK0")],
+        ["Day 24", "Jasper SkyTram, Pyramid Lake and Mount Edith Cavell."],
+        ["Day 25", "Free day: Miette Hot Springs, wildlife spotting and Jasper town."],
+      ],
+      stay: ["Jasper town"],
+      cost: "C$ 840 · 4 nights",
+    },
+    {
+      title: "Vancouver",
+      days: "Days 26 – 29",
+      transport: "Train, bus or flight from Jasper · long travel day",
+      image: u("n6zdsEq8I3g"),
+      highlights: [
+        ["Day 26", "Travel day; evening in Gastown near the steam clock."],
+        ["Day 27", "Stanley Park seawall and Granville Island Public Market.", u("SAEtB8c1IG0")],
+        ["Day 28", "Capilano or Lynn Canyon suspension bridge, then Grouse Mountain.", u("tx8TZernPi8")],
+        ["Day 29", "Free day: Kitsilano beach, Queen Elizabeth Park and souvenirs.", u("CdKsn9-TNCg")],
+      ],
+      stay: ["Downtown", "Gastown"],
+      cost: "C$ 720 · 4 nights",
+    },
+    {
+      title: "Return Home",
+      days: "Day 30",
+      transport: "Vancouver → Algiers (with a connection)",
+      image:
+        u("UFBUCRvnJ0k"),
+      highlights: [
+        ["Day 30", "Head to the airport and fly back to Algiers."],
+      ],
+      stay: [],
+      cost: "",
+    },
+  ],
+  budgetEyebrow: "ACCOMMODATION ESTIMATE",
+  budgetTitle: "Budget at a glance",
+  budgetHeaders: ["Destination", "Nights", "Cost (CAD)"],
+  budget: [
+    ["Toronto", "5", "750"],
+    ["Niagara Falls", "2", "280"],
+    ["Ottawa", "2", "280"],
+    ["Montréal", "4", "560"],
+    ["Québec City", "3", "450"],
+    ["Banff & Lake Louise", "5", "1,150"],
+    ["Jasper", "4", "840"],
+    ["Vancouver", "4", "720"],
+  ],
+  budgetTotal: ["Estimated total", "29", "5,030"],
+};
+
+const italyTrip = {
+  heroImage: uh("75XHJzEIeUc"),
+  title: "Italy in 30 Days",
+  region: "EUROPE",
+  subtitle:
+    "Rome → Naples & Pompeii → Amalfi Coast → Tuscany → Florence → Cinque Terre → Venice → Lake Como & Milan",
+  stats: [
+    { value: "30", label: "DAYS" },
+    { value: "29", label: "NIGHTS" },
+    { value: "8", label: "MAIN REGIONS" },
+    { value: "1", label: "TRAVELER" },
+  ],
+  stops: [
+    {
+      title: "Rome",
+      days: "Days 1 – 6",
+      transport: "Arrival from Algiers",
+      image: u("YShUHC93ztU"),
+      highlights: [
+        ["Day 1", "Arrive, check in and walk to the Trevi Fountain in the evening.", u("TOZHEkLb4dQ")],
+        ["Day 2", "Colosseum, Roman Forum and Palatine Hill.", u("8II5_smwol4")],
+        ["Day 3", "Vatican Museums, Sistine Chapel and St. Peter's Basilica.", u("sTw6bd3Lzow")],
+        ["Day 4", "Pantheon, Piazza Navona and the Spanish Steps.", u("XUWDEXX0Ye0")],
+        ["Day 5", "Trastevere, then Villa Borghese gardens and the Borghese Gallery (book ahead)."],
+        ["Day 6", "Appian Way and the catacombs, then dinner in Testaccio."],
+      ],
+      stay: ["Monti", "Trastevere"],
+      cost: "€ 480 · 6 nights",
+      gallery: [u("QKY5bAo5_Kc"), u("LfzwrFqOFOk"), u("deB8hUHsrf0")],
+    },
+    {
+      title: "Naples & Pompeii",
+      days: "Days 7 – 9",
+      transport: "High-speed train from Rome · about 1 hour 10 minutes",
+      image: u("JScLh0lXsAY"),
+      highlights: [
+        ["Day 7", "Arrive, wander Spaccanapoli and the historic center, and eat pizza where it was born."],
+        ["Day 8", "A full day at Pompeii beneath Mount Vesuvius.", u("kNozWYJ_tB8")],
+        ["Day 9", "National Archaeological Museum and the Castel dell'Ovo seafront.", u("h5cYy5OHDWM")],
+      ],
+      stay: ["Naples historic center"],
+      cost: "€ 210 · 3 nights",
+      gallery: [u("kMPy9wQujzk"), u("ZaMDdINBpY0")],
+    },
+    {
+      title: "Amalfi Coast",
+      days: "Days 10 – 13",
+      transport: "Train to Sorrento or Salerno, then bus or ferry · 3–4 hours",
+      image: u("sqrnQMEy7VQ"),
+      highlights: [
+        ["Day 10", "Arrive in Positano: the beach and its stepped lanes.", u("wAc98mIvqrE")],
+        ["Day 11", "Amalfi town and its cathedral, then the gardens of Ravello."],
+        ["Day 12", "Ferry to Capri: the Blue Grotto and the Anacapri chairlift."],
+        ["Day 13", "Path of the Gods hike, then beach time.", u("kzz0tGgcGQQ")],
+      ],
+      stay: ["Positano", "Praiano", "Sorrento"],
+      cost: "€ 520 · 4 nights",
+      gallery: [u("aa9NPs94bO8"), u("1Zc8SfYHJaw"), u("sE8rUvWHnhY")],
+    },
+    {
+      title: "Tuscany",
+      days: "Days 14 – 17",
+      transport: "Train via Florence to Siena, then bus · about 6 hours",
+      image: u("cs-fGIqlKQs"),
+      highlights: [
+        ["Day 14", "Arrive in Siena: Piazza del Campo and the Torre del Mangia."],
+        ["Day 15", "Siena Cathedral, then San Gimignano and its medieval towers."],
+        ["Day 16", "Val d'Orcia: Pienza, Montepulciano and the cypress-lined roads.", u("47We_cJTwoU")],
+        ["Day 17", "Chianti or Montalcino wine tasting and a sunset in the hills.", u("q7HbYWRxedY")],
+      ],
+      stay: ["Siena"],
+      cost: "€ 340 · 4 nights",
+      gallery: [u("rknrvCrfS1k"), u("tEGGxeTuClY"), u("McH4ksbcCyE")],
+    },
+    {
+      title: "Florence",
+      days: "Days 18 – 21",
+      transport: "Train or bus from Siena · 1.5–2 hours",
+      image: u("5GVy9JS9usY"),
+      highlights: [
+        ["Day 18", "The Duomo, Brunelleschi's dome and the Baptistery.", u("hFXZ5cNfkOk")],
+        ["Day 19", "Uffizi Gallery, Ponte Vecchio and Piazza della Signoria.", u("eJ61aOqe7Lo")],
+        ["Day 20", "Accademia (Michelangelo's David), San Lorenzo market and Oltrarno workshops; sunset at Piazzale Michelangelo."],
+        ["Day 21", "Day trip to Pisa for the Leaning Tower, or to Lucca."],
+      ],
+      stay: ["Santa Maria Novella", "Oltrarno"],
+      cost: "€ 400 · 4 nights",
+    },
+    {
+      title: "Cinque Terre",
+      days: "Days 22 – 24",
+      transport: "Train from Florence via La Spezia · about 3 hours",
+      image: u("mgrfzB5wfWs"),
+      highlights: [
+        ["Day 22", "Arrive in Monterosso al Mare: beach and old town."],
+        ["Day 23", "Hop between Vernazza, Corniglia and Manarola by train or trail (check which paths are open).", u("h8YvejOBoUU")],
+        ["Day 24", "Riomaggiore, a boat trip and sunset over Manarola.", u("xQAqulpYhqw")],
+      ],
+      stay: ["Monterosso", "La Spezia"],
+      cost: "€ 330 · 3 nights",
+    },
+    {
+      title: "Venice",
+      days: "Days 25 – 27",
+      transport: "Trains from La Spezia · 5–6 hours",
+      image: u("L1nx-Mmn8YU"),
+      highlights: [
+        ["Day 25", "Arrive and ride the vaporetto down the Grand Canal at dusk.", u("x9Qixy7lbzo")],
+        ["Day 26", "St. Mark's Basilica, the Doge's Palace and the Rialto Bridge and market.", u("6ZP5jDgq_qM")],
+        ["Day 27", "Murano and Burano by vaporetto."],
+      ],
+      stay: ["Cannaregio", "Dorsoduro"],
+      cost: "€ 330 · 3 nights",
+      gallery: [u("i1R4TgPoZjw"), u("a7ccn4w-SHo")],
+    },
+    {
+      title: "Lake Como & Milan",
+      days: "Days 28 – 29",
+      transport: "Train from Venice to Milan (2.5–3 hours), then train to Varenna",
+      image: u("NPGMW-m1fgk"),
+      highlights: [
+        ["Day 28", "Varenna, a ferry to Bellagio and the gardens of Villa Monastero.", u("eAEG9lf3EFs")],
+        ["Day 29", "Milan: Duomo rooftop, Galleria Vittorio Emanuele II and The Last Supper (book far ahead).", u("HoW89EKoiyw")],
+      ],
+      stay: ["Varenna", "Milano Centrale area"],
+      cost: "€ 200 · 2 nights",
+      gallery: [u("MQwdwP7a-EE"), u("PYS7Y4Gwrr0"), u("bBCyYxQ7EnE")],
+    },
+    {
+      title: "Return Home",
+      days: "Day 30",
+      transport: "Milan → Algiers",
+      image:
+        u("AJqUnu_9_VM"),
+      highlights: [
+        ["Day 30", "Head to the airport and fly back to Algiers."],
+      ],
+      stay: [],
+      cost: "",
+    },
+  ],
+  budgetEyebrow: "ACCOMMODATION ESTIMATE",
+  budgetTitle: "Budget at a glance",
+  budgetHeaders: ["Destination", "Nights", "Cost (EUR)"],
+  budget: [
+    ["Rome", "6", "480"],
+    ["Naples & Pompeii", "3", "210"],
+    ["Amalfi Coast", "4", "520"],
+    ["Tuscany", "4", "340"],
+    ["Florence", "4", "400"],
+    ["Cinque Terre", "3", "330"],
+    ["Venice", "3", "330"],
+    ["Lake Como & Milan", "2", "200"],
+  ],
+  budgetTotal: ["Estimated total", "29", "2,810"],
+};
+
 const trips = {
   brazil: brazilTrip,
   austria: austriaTrip,
+  canada: canadaTrip,
+  italy: italyTrip,
 };
-
-function getTripImageUrls(trip) {
-  const imageUrls = [trip.heroImage];
-
-  trip.stops.forEach((stop) => {
-    imageUrls.push(stop.image, ...(stop.gallery ?? []));
-    stop.highlights.forEach((highlight) => {
-      if (highlight[2]) imageUrls.push(highlight[2]);
-    });
-  });
-
-  return [...new Set(imageUrls.filter(Boolean))];
-}
-
-export function getTripImagePreloadGroups() {
-  return [
-    [brazilTrip.heroImage, austriaTrip.heroImage],
-    getTripImageUrls(brazilTrip).filter(
-      (imageUrl) => imageUrl !== brazilTrip.heroImage
-    ),
-    getTripImageUrls(austriaTrip).filter(
-      (imageUrl) => imageUrl !== austriaTrip.heroImage
-    ),
-  ];
-}
 
 /* ========================================
    SMALL HELPERS
